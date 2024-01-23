@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "./screens/HomeScreen";
+import ProfileScreen from "./screens/ProfileScreen"
 import { StatusBar } from "react-native";
 import colors from "./assets/colors/colors";
 
@@ -16,7 +17,7 @@ const App = () => {
       <StatusBar barStyle={"dark-content"} />
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Главное"
+          initialRouteName="Главное" 
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused }) => {
               let iconName;
@@ -27,7 +28,11 @@ const App = () => {
                 iconName = focused ? "heart" : "heart-outline";
               } else if (route.name === "Профиль") {
                 iconName = focused ? "person" : "person-outline";
-              }
+              } else if (route.name === "Поиск") {
+                  iconName = focused ? "search" : "search-outline";
+              } else if (route.name === "фальг") {
+                iconName = focused ? "footsteps" : "footsteps-outline";
+            }
 
               return (
                 <Ionicons
@@ -43,6 +48,8 @@ const App = () => {
           })}
         >
           <Tab.Screen name="Главное" component={HomeScreen} />
+          <Tab.Screen name="Поиск" component={HomeScreen} />
+          <Tab.Screen name="фальг" component={HomeScreen} />
           <Tab.Screen name="Избранное" component={HomeScreen} />
           <Tab.Screen name="Профиль" component={HomeScreen} />
         </Tab.Navigator>
